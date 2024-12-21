@@ -18,12 +18,12 @@ class RadoslawTajdus {
         System.out.println("2. Wrocław");
         System.out.println("3. Warszawa");
         System.out.println("4. Poznań");
-// Odczytuje wybór użytkownika
+// Odczytuje wybór użytkownika.
         int cityChoice = getChoice(scanner, 1, 4);
 
         String city = "";
         String ticketInfo = "";
-// Przypisuje odpowiednie miasto i listę biletów w zależności od wyboru użytkownika
+// Przypisuje odpowiednie miasto i listę biletów w zależności od wyboru użytkownika.
         switch (cityChoice) {
             case 1:
                 city = "Łódź";
