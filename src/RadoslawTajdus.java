@@ -1,15 +1,16 @@
 import java.util.Scanner;
 
-
+// Radosław Tajduś 122745 gr.4 praca zaliozeniowa, podstawy programowania, Społeczna Akademia Nauk, Łódź
 class RadoslawTajdus {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
+// Wyświetla ekran powitalny i czeka na naciśnięcie klawisza Enter
         displayHeader();
         System.out.println("Witaj w aplikacji biletomat!");
+        System.out.println("Aplikacji w której kupisz bilety komunikacji miejskiej!");
         System.out.println("Naciśnij ENTER aby przejść dalej.");
         waitForEnter(scanner);
-
+// Czyści ekran i wyświetla listę miast do wyboru.
         clearConsole();
         displayHeader();
         System.out.println("Wybierz miasto dla którego chcesz kupić bilet:");
@@ -17,12 +18,12 @@ class RadoslawTajdus {
         System.out.println("2. Wrocław");
         System.out.println("3. Warszawa");
         System.out.println("4. Poznań");
-
+// Odczytuje wybór użytkownika
         int cityChoice = getChoice(scanner, 1, 4);
 
         String city = "";
         String ticketInfo = "";
-
+// Przypisuje odpowiednie miasto i listę biletów w zależności od wyboru użytkownika
         switch (cityChoice) {
             case 1:
                 city = "Łódź";
@@ -64,7 +65,7 @@ class RadoslawTajdus {
                 });
                 break;
         }
-
+// Czyści ekran i wyświetla ekran końcowy.
         clearConsole();
         displayHeader();
         System.out.println("Dokonałeś zakupu!");
@@ -74,7 +75,7 @@ class RadoslawTajdus {
 
         scanner.close();
     }
-
+    // Funkcja do odczytywania wyboru użytkownika w danym zakresie.
     private static int getChoice(Scanner scanner, int min, int max) {
         int choice;
         while (true) {
@@ -92,7 +93,7 @@ class RadoslawTajdus {
             System.out.println("Nieprawidłowy wybór. Spróbuj ponownie (1, 2, 3, lub 4).");
         }
     }
-
+    // Funkcja do oczekiwania na naciśnięcie klawisza Enter.
     private static void waitForEnter(Scanner scanner) {
         while (true) {
             String input = scanner.nextLine();
@@ -102,7 +103,7 @@ class RadoslawTajdus {
             displayHeader();
             System.out.println("Naciśnij Enter, aby kontynuować.");
         }
-    }
+    }// Funkcja do wyświetlania listy biletów i odczytywania wyboru użytkownika.
 
     private static String getTicket(Scanner scanner, String city, String[] tickets) {
         clearConsole();
