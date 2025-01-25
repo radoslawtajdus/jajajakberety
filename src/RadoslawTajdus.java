@@ -1,88 +1,104 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 // Radosław Tajduś 122745 gr.4 praca zaliozeniowa, podstawy programowania, Społeczna Akademia Nauk, Łódź
 class RadoslawTajdus {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-// Wyświetla ekran powitalny i czeka na naciśnięcie klawisza Enter
-        displayHeader();
-        System.out.println("Witaj w aplikacji biletomat!");
-        System.out.println("Aplikacji w której kupisz bilety komunikacji miejskiej!");
-        System.out.println("Naciśnij ENTER aby przejść dalej.");
-        waitForEnter(scanner);
-// Czyści ekran i wyświetla listę miast do wyboru.
-        clearConsole();
-        displayHeader();
-        System.out.println("Wybierz miasto dla którego chcesz kupić bilet:");
-        System.out.println("1. Łódź");
-        System.out.println("2. Wrocław");
-        System.out.println("3. Warszawa");
-        System.out.println("4. Poznań");
-// Odczytuje wybór użytkownika.
-        int cityChoice = getChoice(scanner, 1, 4);
+        List<String> purchases = new ArrayList<>();
+        double totalPrice = 0.0;
 
-        String city = "";
-        String ticketInfo = "";
-// Przypisuje odpowiednie miasto i listę biletów w zależności od wyboru użytkownika.
-        switch (cityChoice) {
-            case 1:
-                city = "Łódź";
-                ticketInfo = getTicket(scanner, "Łódź", new String[] {
-                        "Ulgowy 20 minut cena 2,20",
-                        "Ulgowy 40 minut cena 4,40",
-                        "Normalny 20 minut cena 2,80",
-                        "Normalny 40 minut cena 5,60"
-                });
-                break;
+        while (true) {
+            displayHeader();
+            System.out.println("Witaj w aplikacji biletomat!");
+            System.out.println("Aplikacji w której kupisz bilety komunikacji miejskiej!");
+            System.out.println("Naciśnij ENTER aby przejść dalej.");
+            waitForEnter(scanner);
 
-            case 2:
-                city = "Wrocław";
-                ticketInfo = getTicket(scanner, "Wrocław", new String[] {
-                        "Ulgowy 20 minut cena 2,00",
-                        "Ulgowy 40 minut cena 4,00",
-                        "Normalny 20 minut cena 2,50",
-                        "Normalny 40 minut cena 5,00"
-                });
-                break;
+            clearConsole();
+            displayHeader();
+            System.out.println("Wybierz miasto dla którego chcesz kupić bilet:");
+            System.out.println("1. Łódź");
+            System.out.println("2. Wrocław");
+            System.out.println("3. Warszawa");
+            System.out.println("4. Poznań");
 
-            case 3:
-                city = "Warszawa";
-                ticketInfo = getTicket(scanner, "Warszawa", new String[] {
-                        "Ulgowy 20 minut cena 1,50",
-                        "Ulgowy 40 minut cena 3,00",
-                        "Normalny 20 minut cena 2,00",
-                        "Normalny 40 minut cena 4,00"
-                });
-                break;
+            int cityChoice = getChoice(scanner, 1, 4);
 
-            case 4:
-                city = "Poznań";
-                ticketInfo = getTicket(scanner, "Poznań", new String[] {
-                        "Ulgowy 20 minut cena 1,80",
-                        "Ulgowy 40 minut cena 3,60",
-                        "Normalny 20 minut cena 2,00",
-                        "Normalny 40 minut cena 4,00"
-                });
+            String city = "";
+            String[] tickets = null;
+
+            switch (cityChoice) {
+                case 1:
+                    city = "Łódź";
+                    tickets = new String[] {
+                            "Ulgowy 20 minut cena 2,20",
+                            "Ulgowy 40 minut cena 4,40",
+                            "Normalny 20 minut cena 2,80",
+                            "Normalny 40 minut cena 5,60"
+                    };
+                    break;
+                case 2:
+                    city = "Wrocław";
+                    tickets = new String[] {
+                            "Ulgowy 20 minut cena 2,00",
+                            "Ulgowy 40 minut cena 4,00",
+                            "Normalny 20 minut cena 2,50",
+                            "Normalny 40 minut cena 5,00"
+                    };
+                    break;
+                case 3:
+                    city = "Warszawa";
+                    tickets = new String[] {
+                            "Ulgowy 20 minut cena 1,50",
+                            "Ulgowy 40 minut cena 3,00",
+                            "Normalny 20 minut cena 2,00",
+                            "Normalny 40 minut cena 4,00"
+                    };
+                    break;
+                case 4:
+                    city = "Poznań";
+                    tickets = new String[] {
+                            "Ulgowy 20 minut cena 1,80",
+                            "Ulgowy 40 minut cena 3,60",
+                            "Normalny 20 minut cena 2,00",
+                            "Normalny 40 minut cena 4,00"
+                    };
+                    break;
+            }
+
+            String ticketInfo = getTicket(scanner, city, tickets);
+            double ticketPrice = extractPrice(ticketInfo);
+
+            System.out.println("Podaj, ile sztuk tego biletu chcesz kupić:");
+            int quantity = getChoice(scanner, 1, 100);
+
+            purchases.add(formatPurchase(city, ticketInfo, quantity));
+            totalPrice += ticketPrice * quantity;
+
+            System.out.println("Czy chcesz dokonać kolejnego zakupu? (tak/nie)");
+            String decision = scanner.nextLine().trim().toLowerCase();
+            if (decision.equals("nie")) {
                 break;
+            }
+            clearConsole();
         }
-// Czyści ekran i wyświetla ekran końcowy.
+
         clearConsole();
         displayHeader();
-        System.out.println("Dokonałeś zakupu!");
-        System.out.println("Miasto: " + city);
-        System.out.println("Bilet: " + ticketInfo);
-        System.out.println("Dziękujemy za skorzystanie z aplikacji biletomat!");
-
+        purchasesSummary(purchases);
+        System.out.printf("\nŁączna suma za wszystkie bilety: %.2f zł\n", totalPrice);
         scanner.close();
     }
-    // Funkcja do odczytywania wyboru użytkownika w danym zakresie.
+
     private static int getChoice(Scanner scanner, int min, int max) {
         int choice;
         while (true) {
             System.out.print("Twój wybór: ");
             if (scanner.hasNextInt()) {
                 choice = scanner.nextInt();
-                scanner.nextLine(); // Konsumuj nową linię
+                scanner.nextLine();
                 if (choice >= min && choice <= max) {
                     return choice;
                 }
@@ -90,10 +106,10 @@ class RadoslawTajdus {
                 scanner.nextLine();
             }
             displayHeader();
-            System.out.println("Nieprawidłowy wybór. Spróbuj ponownie (1, 2, 3, lub 4).");
+            System.out.println("Nieprawidłowy wybór. Spróbuj ponownie (" + min + " - " + max + ").");
         }
     }
-    // Funkcja do oczekiwania na naciśnięcie klawisza Enter.
+
     private static void waitForEnter(Scanner scanner) {
         while (true) {
             String input = scanner.nextLine();
@@ -103,7 +119,7 @@ class RadoslawTajdus {
             displayHeader();
             System.out.println("Naciśnij Enter, aby kontynuować.");
         }
-    }// Funkcja do wyświetlania listy biletów i odczytywania wyboru użytkownika.
+    }
 
     private static String getTicket(Scanner scanner, String city, String[] tickets) {
         clearConsole();
@@ -117,6 +133,27 @@ class RadoslawTajdus {
 
         int ticketChoice = getChoice(scanner, 1, tickets.length);
         return tickets[ticketChoice - 1];
+    }
+
+    private static double extractPrice(String ticketInfo) {
+        String[] parts = ticketInfo.split(" ");
+        for (String part : parts) {
+            if (part.matches("\\d+,\\d{2}")) {
+                return Double.parseDouble(part.replace(",", "."));
+            }
+        }
+        return 0.0;
+    }
+
+    private static String formatPurchase(String city, String ticketInfo, int quantity) {
+        return "Miasto: " + city + ", Bilet: " + ticketInfo + ", Sztuk: " + quantity;
+    }
+
+    private static void purchasesSummary(List<String> purchases) {
+        System.out.println("Twoje zakupy:");
+        for (String purchase : purchases) {
+            System.out.println("- " + purchase);
+        }
     }
 
     private static void clearConsole() {

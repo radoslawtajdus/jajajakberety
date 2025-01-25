@@ -1,0 +1,14 @@
+C:\Users\Użytkownik\Desktop\studia\radoslawtajdus122745\radoslawtajdus122745\radoslawtajdus122745\bin\Debug\net9.0\radoslawtajdus122745.exe
+C:\Users\Użytkownik\Desktop\studia\radoslawtajdus122745\radoslawtajdus122745\radoslawtajdus122745\bin\Debug\net9.0\radoslawtajdus122745.deps.json
+C:\Users\Użytkownik\Desktop\studia\radoslawtajdus122745\radoslawtajdus122745\radoslawtajdus122745\bin\Debug\net9.0\radoslawtajdus122745.runtimeconfig.json
+C:\Users\Użytkownik\Desktop\studia\radoslawtajdus122745\radoslawtajdus122745\radoslawtajdus122745\bin\Debug\net9.0\radoslawtajdus122745.dll
+C:\Users\Użytkownik\Desktop\studia\radoslawtajdus122745\radoslawtajdus122745\radoslawtajdus122745\bin\Debug\net9.0\radoslawtajdus122745.pdb
+C:\Users\Użytkownik\Desktop\studia\radoslawtajdus122745\radoslawtajdus122745\radoslawtajdus122745\obj\Debug\net9.0\radoslawtajdus122745.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Użytkownik\Desktop\studia\radoslawtajdus122745\radoslawtajdus122745\radoslawtajdus122745\obj\Debug\net9.0\radoslawtajdus122745.AssemblyInfoInputs.cache
+C:\Users\Użytkownik\Desktop\studia\radoslawtajdus122745\radoslawtajdus122745\radoslawtajdus122745\obj\Debug\net9.0\radoslawtajdus122745.AssemblyInfo.cs
+C:\Users\Użytkownik\Desktop\studia\radoslawtajdus122745\radoslawtajdus122745\radoslawtajdus122745\obj\Debug\net9.0\radoslawtajdus122745.csproj.CoreCompileInputs.cache
+C:\Users\Użytkownik\Desktop\studia\radoslawtajdus122745\radoslawtajdus122745\radoslawtajdus122745\obj\Debug\net9.0\radoslawtajdus122745.dll
+C:\Users\Użytkownik\Desktop\studia\radoslawtajdus122745\radoslawtajdus122745\radoslawtajdus122745\obj\Debug\net9.0\refint\radoslawtajdus122745.dll
+C:\Users\Użytkownik\Desktop\studia\radoslawtajdus122745\radoslawtajdus122745\radoslawtajdus122745\obj\Debug\net9.0\radoslawtajdus122745.pdb
+C:\Users\Użytkownik\Desktop\studia\radoslawtajdus122745\radoslawtajdus122745\radoslawtajdus122745\obj\Debug\net9.0\radoslawtajdus122745.genruntimeconfig.cache
+C:\Users\Użytkownik\Desktop\studia\radoslawtajdus122745\radoslawtajdus122745\radoslawtajdus122745\obj\Debug\net9.0\ref\radoslawtajdus122745.dll
